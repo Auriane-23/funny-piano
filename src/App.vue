@@ -13,8 +13,19 @@ export default {
   name: 'App',
   components: {
     VPiano,
-    VText
-  }
+    VText,
+  },
+  // data() {
+  //   return {
+  //     gifs: []
+  //   }
+  // }, 
+  // methods: {
+  //   getEmoji() {
+  //     gifs = null
+  //     console.log(gifs)
+  //   }
+  // }
 }
 </script>
 

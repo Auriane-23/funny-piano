@@ -1,23 +1,25 @@
 <template>
-    <div class="MainPiano fixed bottom-0">
-        <div class="Piano__container container">
-            <div class="touche flex">
-                <div class="toucheBlanche flex py-3 relative">
-                    <button class="firstBlanche" @click="onC()"></button>
-                    <button class="blanche" @click="onD()"></button>
-                    <button class="blanche" @click="onE()"></button>
-                    <button class="blanche" @click="onF()"></button>
-                    <button class="blanche" @click="onG()"></button>
-                    <button class="blanche" @click="onA()"></button>
-                    <button class="blanche rounded-r-lg" @click="onB()"></button>
-                </div>
-                <div class="toucheNoir flex z-5 absolute">
-                    <button class="firstNoir hover:bg-rose-hover" @click="onC2()"></button>
-                    <button class="noir bg-black hover:bg-rose-hover" @click="onD2()"></button>
-                    <button class="noir bg-transparent"></button>
-                    <button class="noir bg-black hover:bg-rose-hover" @click="onF2()"></button>
-                    <button class="noir bg-black hover:bg-rose-hover" @click="onG2()"></button>
-                    <button class="noir bg-black hover:bg-rose-hover" @click="onA2()"></button>
+    <div class="Emoji"> {{gifs}}
+        <div class="MainPiano fixed bottom-0">
+            <div class="Piano__container container">
+                <div class="touche flex">
+                    <div class="toucheBlanche flex py-3 relative">
+                        <button class="firstBlanche" @click="onC(), onClick()" @keyup.67="onC()"></button>
+                        <button class="blanche" @click="onD(), onClick()" @keyup.68="onD()"></button>
+                        <button class="blanche" @click="onE(), onClick()" @keyup.69="onE()"></button>
+                        <button class="blanche" @click="onF(), onClick()" @keyup.70="onF()"></button>
+                        <button class="blanche" @click="onG(), onClick()" @keyup.71="onG()"></button>
+                        <button class="blanche" @click="onA(), onClick()" @keyup.65="onA()"></button>
+                        <button class="blanche rounded-r-lg" @click="onB(), onClick()" @keyup.66="onB()"></button>
+                    </div>
+                    <div class="toucheNoir flex z-5 absolute">
+                        <button class="firstNoir hover:bg-rose-hover" @click="onC2(), onClick()"></button>
+                        <button class="noir bg-black hover:bg-rose-hover" @click="onD2(), onClick()"></button>
+                        <button class="noir bg-transparent"></button>
+                        <button class="noir bg-black hover:bg-rose-hover" @click="onF2(), onClick()"></button>
+                        <button class="noir bg-black hover:bg-rose-hover" @click="onG2(), onClick()"></button>
+                        <button class="noir bg-black hover:bg-rose-hover" @click="onA2(), onClick()"></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -25,9 +27,20 @@
 </template>
 
 <script>
+import { GiphyFetch } from '@giphy/js-fetch-api'
 
 export default {
+    data() {
+        return {
+            gifs: []
+        }
+    },
     methods: {
+        async onClick() {
+            const gf = new GiphyFetch('hoc7Xw81iwUP2iewXhekupQznVmYDlHK')
+            const gifs = await gf.emoji({offset:0, limit:1}) 
+            console.log(gifs)
+        },
         onA() {
             const audio = document.createElement('audio')
             audio.src = 'assets/sounds/A.mp3'
