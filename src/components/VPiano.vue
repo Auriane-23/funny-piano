@@ -1,26 +1,23 @@
 <template>
-    <div class="Emoji"> {{gifs}}
-        <div class="MainPiano fixed bottom-0">
-            <div class="Piano__container container">
-                <div class="touche flex">
-                    <div class="toucheBlanche flex py-3 relative">
-                        <button class="firstBlanche" @click="onC(), onClick()" @keyup.67="onC()"></button>
-                        <button class="blanche" @click="onD(), onClick()" @keyup.68="onD()"></button>
-                        <button class="blanche" @click="onE(), onClick()" @keyup.69="onE()"></button>
-                        <button class="blanche" @click="onF(), onClick()" @keyup.70="onF()"></button>
-                        <button class="blanche" @click="onG(), onClick()" @keyup.71="onG()"></button>
-                        <button class="blanche" @click="onA(), onClick()" @keyup.65="onA()"></button>
-                        <button class="blanche rounded-r-lg" @click="onB(), onClick()" @keyup.66="onB()"></button>
-                    </div>
-                    <div class="toucheNoir flex z-5 absolute">
-                        <button class="firstNoir hover:bg-rose-hover" @click="onC2(), onClick()"></button>
-                        <button class="noir bg-black hover:bg-rose-hover" @click="onD2(), onClick()"></button>
-                        <button class="noir bg-transparent"></button>
-                        <button class="noir bg-black hover:bg-rose-hover" @click="onF2(), onClick()"></button>
-                        <button class="noir bg-black hover:bg-rose-hover" @click="onG2(), onClick()"></button>
-                        <button class="noir bg-black hover:bg-rose-hover" @click="onA2(), onClick()"></button>
-                    </div>
-                </div>
+    <div class="MainPiano">
+        <img id="emoji" class="m-auto" src="" alt="">
+        <div class="Piano__container flex flex-column bg-black m-auto">
+            <div class="toucheBlanche flex py-3 relative">
+                <button class="firstBlanche" @click="onC(), getEmoji()"></button>
+                <button class="blanche" @click="onD(), getEmoji()"></button>
+                <button class="blanche" @click="onE(), getEmoji()"></button>
+                <button class="blanche" @click="onF(), getEmoji()"></button>
+                <button class="blanche" @click="onG(), getEmoji()"></button>
+                <button class="blanche" @click="onA(), getEmoji()"></button>
+                <button class="blanche rounded-r-lg" @click="onB(), getEmoji()"></button>
+            </div>
+            <div class="toucheNoir flex z-5 absolute">
+                <button class="firstNoir hover:bg-rose-hover" @click="onC2(), getEmoji()"></button>
+                <button class="noir bg-black hover:bg-rose-hover" @click="onD2(), getEmoji()"></button>
+                <button class="noir bg-transparent"></button>
+                <button class="noir bg-black hover:bg-rose-hover" @click="onF2(), getEmoji()"></button>
+                <button class="noir bg-black hover:bg-rose-hover" @click="onG2(), getEmoji()"></button>
+                <button class="noir bg-black hover:bg-rose-hover" @click="onA2(), getEmoji()"></button>
             </div>
         </div>
     </div>
@@ -36,10 +33,14 @@ export default {
         }
     },
     methods: {
-        async onClick() {
+        async getEmoji() {
             const gf = new GiphyFetch('hoc7Xw81iwUP2iewXhekupQznVmYDlHK')
-            const gifs = await gf.emoji({offset:0, limit:1}) 
+            const { data: gifs } =  await gf.emoji()
             console.log(gifs)
+            const nbRandom = Math.floor(Math.random() * Math.floor(25)) ;
+            console.log(gifs[nbRandom].images['fixed_width'].webp) ;
+            const urlRandom = gifs[nbRandom].images['fixed_width'].webp ;
+            document.getElementById('emoji').src=urlRandom ;
         },
         onA() {
             const audio = document.createElement('audio')
@@ -129,13 +130,16 @@ export default {
 
 <style lang="postcss" scoped>
 
+.MainPiano {
+    margin: auto;
+}
+
 .Piano__container {
     height: 276px;
     width: 531px;
     left: 0px;
     top: 0px;
     border-radius: 10px;
-    @apply bg-black;
 }
 
 .firstBlanche {

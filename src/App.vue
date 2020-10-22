@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="w-screen h-screen bg-gradient-to-r from-orange to-rose">
+  <div id="app" class="text-center m-auto pt-10 w-full h-full">
     <v-text></v-text>
     <v-piano></v-piano>
   </div>
@@ -14,21 +14,13 @@ export default {
   components: {
     VPiano,
     VText,
-  },
-  // data() {
-  //   return {
-  //     gifs: []
-  //   }
-  // }, 
-  // methods: {
-  //   getEmoji() {
-  //     gifs = null
-  //     console.log(gifs)
-  //   }
-  // }
+  }
 }
 </script>
 
 <style lang="postcss" scoped>
-
+#app {
+  font-family: 'PT Mono', monospace ;
+  background: linear-gradient(135deg, #FF9D6C 0%, #BB4E75 100%) ;
+}
 </style>

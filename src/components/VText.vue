@@ -3,6 +3,9 @@
         <div class="Rectangle mt-10 m-auto">
             <div class="Text__title mt-2 text-center text-3xl text-white">The emoji piano</div>
         </div>
+        <div class="Notes bottom-0">
+            <p> Do </p>
+        </div>
     </div>
 </template>
 
