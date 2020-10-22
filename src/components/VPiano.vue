@@ -1,6 +1,6 @@
 <template>
-    <div class="MainPiano">
-        <img id="emoji" class="m-auto" src="" alt="">
+    <div class="MainPiano flex">
+        <img id="emoji" class="Emoji" src="" alt="">
         <div class="Piano__container flex flex-column bg-black m-auto">
             <div class="toucheBlanche flex py-3 relative">
                 <button class="firstBlanche" @click="onC(), getEmoji()"></button>
@@ -20,6 +20,7 @@
                 <button class="noir bg-black hover:bg-rose-hover" @click="onA2(), getEmoji()"></button>
             </div>
         </div>
+        <img id="emoji2" class="Emoji" src="" alt="">
     </div>
 </template>
 
@@ -41,6 +42,7 @@ export default {
             console.log(gifs[nbRandom].images['fixed_width'].webp) ;
             const urlRandom = gifs[nbRandom].images['fixed_width'].webp ;
             document.getElementById('emoji').src=urlRandom ;
+            document.getElementById('emoji2').src=urlRandom ;
         },
         onA() {
             const audio = document.createElement('audio')
@@ -130,16 +132,16 @@ export default {
 
 <style lang="postcss" scoped>
 
-.MainPiano {
-    margin: auto;
-}
-
 .Piano__container {
     height: 276px;
     width: 531px;
-    left: 0px;
-    top: 0px;
+    margin-top: 200px;
     border-radius: 10px;
+}
+
+.Notes {
+    color: white;
+    margin: auto;
 }
 
 .firstBlanche {

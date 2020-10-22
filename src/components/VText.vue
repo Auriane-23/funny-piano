@@ -1,10 +1,7 @@
 <template>
     <div class="Text">
-        <div class="Rectangle mt-10 m-auto">
+        <div class="Rectangle">
             <div class="Text__title mt-2 text-center text-3xl text-white">The emoji piano</div>
-        </div>
-        <div class="Notes bottom-0">
-            <p> Do </p>
         </div>
     </div>
 </template>
@@ -19,6 +16,8 @@
     right: 0%;
     top: 0%;
     bottom: 0%;
+    margin: auto;
+    margin-top: 40px;
     
     border-radius: 10px;
     background: #111111;
