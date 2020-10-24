@@ -1,15 +1,15 @@
 <template>
-    <div class="MainPiano flex">
-        <img id="emoji" class="Emoji" src="" alt="">
+    <div class="MainPiano">
+        <img id="emoji" class="Emoji m-auto" src="" alt="">
         <div class="Piano__container flex flex-column bg-black m-auto">
-            <div class="toucheBlanche flex py-3 relative">
-                <button class="firstBlanche" @click="onC(), getEmoji()"></button>
-                <button class="blanche" @click="onD(), getEmoji()"></button>
-                <button class="blanche" @click="onE(), getEmoji()"></button>
-                <button class="blanche" @click="onF(), getEmoji()"></button>
-                <button class="blanche" @click="onG(), getEmoji()"></button>
-                <button class="blanche" @click="onA(), getEmoji()"></button>
-                <button class="blanche rounded-r-lg" @click="onB(), getEmoji()"></button>
+            <div class="toucheBlanche flex relative m-auto">
+                <button class="blanche rounded-l-lg" @click="onC(), getEmoji()" @keyup.67="onC()"></button>
+                <button class="blanche ml-1" @click="onD(), getEmoji()"></button>
+                <button class="blanche ml-1" @click="onE(), getEmoji()"></button>
+                <button class="blanche ml-1" @click="onF(), getEmoji()"></button>
+                <button class="blanche ml-1" @click="onG(), getEmoji()"></button>
+                <button class="blanche ml-1" @click="onA(), getEmoji()"></button>
+                <button class="blanche ml-1 rounded-r-lg" @click="onB(), getEmoji()"></button>
             </div>
             <div class="toucheNoir flex z-5 absolute">
                 <button class="firstNoir hover:bg-rose-hover" @click="onC2(), getEmoji()"></button>
@@ -20,7 +20,29 @@
                 <button class="noir bg-black hover:bg-rose-hover" @click="onA2(), getEmoji()"></button>
             </div>
         </div>
-        <img id="emoji2" class="Emoji" src="" alt="">
+        <div class="Notes__container m-auto hidden md:flex">
+            <div class="note ml-6">
+                <p>DO</p>
+            </div>
+            <div class="note">
+                <p>RE</p>
+            </div>
+            <div class="note">
+                <p>MI</p>
+            </div>
+            <div class="note">
+                <p>FA</p>
+            </div>
+            <div class="note">
+                <p>SOL</p>
+            </div>
+            <div class="note">
+                <p>LA</p>
+            </div>
+            <div class="note">
+                <p>SI</p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -34,15 +56,16 @@ export default {
         }
     },
     methods: {
+
         async getEmoji() {
             const gf = new GiphyFetch('hoc7Xw81iwUP2iewXhekupQznVmYDlHK')
             const { data: gifs } =  await gf.emoji()
             console.log(gifs)
-            const nbRandom = Math.floor(Math.random() * Math.floor(25)) ;
-            console.log(gifs[nbRandom].images['fixed_width'].webp) ;
-            const urlRandom = gifs[nbRandom].images['fixed_width'].webp ;
+
+            const nbRandom = Math.floor(Math.random() * Math.floor(25))
+            console.log(gifs[nbRandom].images['fixed_width'].webp)
+            const urlRandom = gifs[nbRandom].images['fixed_width'].webp
             document.getElementById('emoji').src=urlRandom ;
-            document.getElementById('emoji2').src=urlRandom ;
         },
         onA() {
             const audio = document.createElement('audio')
@@ -135,22 +158,20 @@ export default {
 .Piano__container {
     height: 276px;
     width: 531px;
-    margin-top: 200px;
     border-radius: 10px;
 }
 
-.Notes {
-    color: white;
-    margin: auto;
+@media only screen and (max-width: 767px) {
+    .Piano__container {
+        max-height: 190px ;
+        max-width: 368px ;
+        margin-top: 70px ;
+    }
 }
 
-.firstBlanche {
-    height: 252px;
-    width: 69px;
-    left: 450px;
-    top: 12px;
-    margin-left: 12px;
-    @apply bg-white rounded-l-lg;
+.Emoji {
+    height: 200px;
+    margin-top: 105px;
 }
 
 .blanche {
@@ -158,13 +179,16 @@ export default {
     width: 69px;
     left: 450px;
     top: 12px;
-    margin-left: 4px;
     @apply bg-white;
 }
 
-.firstBlanche:hover {
-    @apply bg-yellow-hover;
+@media only screen and (max-width: 767px) {
+    .blanche {
+        height: 173px;
+        width: 47px;
+    }
 }
+
 .blanche:hover {
     @apply bg-yellow-hover;
 } 
@@ -174,9 +198,17 @@ export default {
     width: 30px;
     left: 68px;
     top: 12px;
-    margin-top: 12px;
+    margin-top: 9px;
     margin-left: 68px;
     @apply bg-black rounded-b-lg;
+}
+
+@media only screen and (max-width: 767px) {
+    .firstNoir {
+        height: 126px;
+        width: 21px;
+        margin-left: 45px;
+    }
 }
 
 .noir {
@@ -184,9 +216,25 @@ export default {
     width: 30px;
     left: 68px;
     top: 12px;
-    margin-top: 12px;
+    margin-top: 9px;
     margin-left: 43px;
     @apply rounded-b-lg;
 }
 
+@media only screen and (max-width: 767px) {
+    .noir {
+        height: 126px;
+        width: 21px;
+        margin-left: 30px;
+    }
+}
+
+.Notes__container {
+    height: 252px;
+    width: 507px;
+    margin-top: 15px;
+}
+.note {
+    @apply text-white;
+}
 </style>

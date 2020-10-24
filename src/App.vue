@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="text-center m-auto pt-10 w-screen h-screen">
+  <div id="app" class="text-center m-auto w-screen h-screen fixed">
     <v-text></v-text>
     <v-piano></v-piano>
   </div>
