@@ -20,25 +20,25 @@
             </div>
         </div>
         <div class="Notes__container m-auto hidden md:flex">
-            <div class="note ml-8 Do">
+            <div class="note ml-8">
                 <p>DO</p>
             </div>
-            <div class="note ml-12 Re">
+            <div class="note ml-12">
                 <p>RE</p>
             </div>
-            <div class="note ml-12 Mi">
+            <div class="note ml-12">
                 <p>MI</p>
             </div>
-            <div class="note ml-16 Fa">
+            <div class="note ml-16">
                 <p>FA</p>
             </div>
-            <div class="note ml-12 Sol">
+            <div class="note ml-12">
                 <p>SOL</p>
             </div>
-            <div class="note ml-12 La">
+            <div class="note ml-12">
                 <p>LA</p>
             </div>
-            <div class="note ml-12 Si">
+            <div class="note ml-12">
                 <p>SI</p>
             </div>
         </div>
@@ -70,43 +70,36 @@ export default {
                     this.onC();
                     this.getEmoji();
                     document.getElementsByClassName('C')[0].style.backgroundColor = '#F1C40F';
-                    document.getElementsByClassName('Do')[0].style.color = '#F4F6F7';
                     break;
                 case 83:
                     this.onD();
                     this.getEmoji();
                     document.getElementsByClassName('D')[0].style.backgroundColor = '#F1C40F';
-                    document.getElementsByClassName('Re')[0].style.color = '#F4F6F7';
                     break;
                 case 68:
                     this.onE();
                     this.getEmoji();
                     document.getElementsByClassName('E')[0].style.backgroundColor = '#F1C40F';
-                    document.getElementsByClassName('Mi')[0].style.color = '#F4F6F7';
                     break;
                 case 70:
                     this.onF();
                     this.getEmoji();
                     document.getElementsByClassName('F')[0].style.backgroundColor = '#F1C40F';
-                    document.getElementsByClassName('Fa')[0].style.color = '#F4F6F7';
                     break;
                 case 71:
                     this.onG();
                     this.getEmoji();
                     document.getElementsByClassName('G')[0].style.backgroundColor = '#F1C40F';
-                    document.getElementsByClassName('Sol')[0].style.color = '#F4F6F7';
                     break;
                 case 72:
                     this.onA();
                     this.getEmoji();
                     document.getElementsByClassName('A')[0].style.backgroundColor = '#F1C40F';
-                    document.getElementsByClassName('La')[0].style.color = '#F4F6F7';
                     break;
                 case 74:
                     this.onB();
                     this.getEmoji();
                     document.getElementsByClassName('B')[0].style.backgroundColor = '#F1C40F';
-                    document.getElementsByClassName('Si')[0].style.color = '#F4F6F7';
                     break;
                 case 90:
                     this.onC2();
@@ -150,9 +143,6 @@ export default {
             }
             for (let j = 0 ; j < 5 ; j++) {
                 document.getElementsByClassName('noir')[j].style.backgroundColor = "#000000" ;
-            }
-            for (let k = 0 ; k < 7 ; k++) {
-                document.getElementsByClassName('note')[k].style.color = "rgba(255, 255, 255, 0.4)" ;
             }
         },
         async getEmoji() {
@@ -350,7 +340,9 @@ export default {
     width: 507px;
     margin-top: 15px;
 }
+
 .note {
     @apply text-white;
 }
+
 </style>
