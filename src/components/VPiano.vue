@@ -3,43 +3,42 @@
         <img id="emoji" class="Emoji m-auto" src="" alt="">
         <div class="Piano__container flex flex-column bg-black m-auto">
             <div class="toucheBlanche flex relative m-auto">
-                <button class="blanche rounded-l-lg" @click="onC(), getEmoji()" @keyup.67="onC()"></button>
-                <button class="blanche ml-1" @click="onD(), getEmoji()"></button>
-                <button class="blanche ml-1" @click="onE(), getEmoji()"></button>
-                <button class="blanche ml-1" @click="onF(), getEmoji()"></button>
-                <button class="blanche ml-1" @click="onG(), getEmoji()"></button>
-                <button class="blanche ml-1" @click="onA(), getEmoji()"></button>
-                <button class="blanche ml-1 rounded-r-lg" @click="onB(), getEmoji()"></button>
+                <button class="blanche rounded-l-lg C" @click="onC(), getEmoji()"></button>
+                <button class="blanche ml-1 D" @click="onD(), getEmoji()"></button>
+                <button class="blanche ml-1 E" @click="onE(), getEmoji()"></button>
+                <button class="blanche ml-1 F" @click="onF(), getEmoji()"></button>
+                <button class="blanche ml-1 G" @click="onG(), getEmoji()"></button>
+                <button class="blanche ml-1 A" @click="onA(), getEmoji()"></button>
+                <button class="blanche ml-1 rounded-r-lg B" @click="onB(), getEmoji()"></button>
             </div>
             <div class="toucheNoir flex z-5 absolute">
-                <button class="firstNoir hover:bg-rose-hover" @click="onC2(), getEmoji()"></button>
-                <button class="noir bg-black hover:bg-rose-hover" @click="onD2(), getEmoji()"></button>
-                <button class="noir bg-transparent"></button>
-                <button class="noir bg-black hover:bg-rose-hover" @click="onF2(), getEmoji()"></button>
-                <button class="noir bg-black hover:bg-rose-hover" @click="onG2(), getEmoji()"></button>
-                <button class="noir bg-black hover:bg-rose-hover" @click="onA2(), getEmoji()"></button>
+                <button class="firstNoir hover:bg-rose-hover C2" @click="onC2(), getEmoji()"></button>
+                <button class="noir bg-black hover:bg-rose-hover D2" @click="onD2(), getEmoji()"></button>
+                <button class="thirdNoir bg-black hover:bg-rose-hover F2" @click="onF2(), getEmoji()"></button>
+                <button class="noir bg-black hover:bg-rose-hover G2" @click="onG2(), getEmoji()"></button>
+                <button class="noir bg-black hover:bg-rose-hover A2" @click="onA2(), getEmoji()"></button>
             </div>
         </div>
         <div class="Notes__container m-auto hidden md:flex">
-            <div class="note ml-6">
+            <div class="note ml-8 Do">
                 <p>DO</p>
             </div>
-            <div class="note">
+            <div class="note ml-12 Re">
                 <p>RE</p>
             </div>
-            <div class="note">
+            <div class="note ml-12 Mi">
                 <p>MI</p>
             </div>
-            <div class="note">
+            <div class="note ml-16 Fa">
                 <p>FA</p>
             </div>
-            <div class="note">
+            <div class="note ml-12 Sol">
                 <p>SOL</p>
             </div>
-            <div class="note">
+            <div class="note ml-12 La">
                 <p>LA</p>
             </div>
-            <div class="note">
+            <div class="note ml-12 Si">
                 <p>SI</p>
             </div>
         </div>
@@ -55,8 +54,107 @@ export default {
             gifs: []
         }
     },
+    mounted() {
+        this.isPress = false
+        this.addListeners()
+    },
     methods: {
+        addListeners() {
+            document.addEventListener('keydown', this.onKeyDown)
+            document.addEventListener('keyup', this.onKeyUp)
+        },
+        onKeyDown(e) {
+            if (this.isPress) return
+            switch (e.keyCode) {
+                case 81: 
+                    this.onC();
+                    this.getEmoji();
+                    document.getElementsByClassName('C')[0].style.backgroundColor = '#F1C40F';
+                    document.getElementsByClassName('Do')[0].style.color = '#F4F6F7';
+                    break;
+                case 83:
+                    this.onD();
+                    this.getEmoji();
+                    document.getElementsByClassName('D')[0].style.backgroundColor = '#F1C40F';
+                    document.getElementsByClassName('Re')[0].style.color = '#F4F6F7';
+                    break;
+                case 68:
+                    this.onE();
+                    this.getEmoji();
+                    document.getElementsByClassName('E')[0].style.backgroundColor = '#F1C40F';
+                    document.getElementsByClassName('Mi')[0].style.color = '#F4F6F7';
+                    break;
+                case 70:
+                    this.onF();
+                    this.getEmoji();
+                    document.getElementsByClassName('F')[0].style.backgroundColor = '#F1C40F';
+                    document.getElementsByClassName('Fa')[0].style.color = '#F4F6F7';
+                    break;
+                case 71:
+                    this.onG();
+                    this.getEmoji();
+                    document.getElementsByClassName('G')[0].style.backgroundColor = '#F1C40F';
+                    document.getElementsByClassName('Sol')[0].style.color = '#F4F6F7';
+                    break;
+                case 72:
+                    this.onA();
+                    this.getEmoji();
+                    document.getElementsByClassName('A')[0].style.backgroundColor = '#F1C40F';
+                    document.getElementsByClassName('La')[0].style.color = '#F4F6F7';
+                    break;
+                case 74:
+                    this.onB();
+                    this.getEmoji();
+                    document.getElementsByClassName('B')[0].style.backgroundColor = '#F1C40F';
+                    document.getElementsByClassName('Si')[0].style.color = '#F4F6F7';
+                    break;
+                case 90:
+                    this.onC2();
+                    this.getEmoji();
+                    document.getElementsByClassName('C2')[0].style.backgroundColor = '#C2185B';
+                    break;
+                case 69:
+                    this.onD2();
+                    this.getEmoji();
+                    document.getElementsByClassName('D2')[0].style.backgroundColor = '#C2185B';
+                    break;
+                case 84:
+                    this.onF2();
+                    this.getEmoji();
+                    document.getElementsByClassName('F2')[0].style.backgroundColor = '#C2185B';
+                    break;
+                case 89:
+                    this.onG2();
+                    this.getEmoji();
+                    document.getElementsByClassName('G2')[0].style.backgroundColor = '#C2185B';
+                    break;
+                case 85:
+                    this.onA2();
+                    this.getEmoji();
+                    document.getElementsByClassName('A2')[0].style.backgroundColor = '#C2185B';
+                    break;
+            }
+            this.isPress = true
+        },
+        onKeyUp() {
+            this.isPress = false
 
+            for (let i = 0 ; i < 7 ; i++) {
+                document.getElementsByClassName('blanche')[i].style.backgroundColor = "#FFFFFF" ;
+            }
+            for (let j = 0 ; j < 1 ; j++) {
+                document.getElementsByClassName('firstNoir')[j].style.backgroundColor = "#000000" ;
+            }
+            for (let j = 0 ; j < 1 ; j++) {
+                document.getElementsByClassName('thirdNoir')[j].style.backgroundColor = "#000000" ;
+            }
+            for (let j = 0 ; j < 5 ; j++) {
+                document.getElementsByClassName('noir')[j].style.backgroundColor = "#000000" ;
+            }
+            for (let k = 0 ; k < 7 ; k++) {
+                document.getElementsByClassName('note')[k].style.color = "rgba(255, 255, 255, 0.4)" ;
+            }
+        },
         async getEmoji() {
             const gf = new GiphyFetch('hoc7Xw81iwUP2iewXhekupQznVmYDlHK')
             const { data: gifs } =  await gf.emoji()
@@ -226,6 +324,24 @@ export default {
         height: 126px;
         width: 21px;
         margin-left: 30px;
+    }
+}
+
+.thirdNoir {
+    height: 184px;
+    width: 30px;
+    left: 68px;
+    top: 12px;
+    margin-top: 9px;
+    margin-left: 116px;
+    @apply rounded-b-lg;
+}
+
+@media only screen and (max-width: 767px) {
+    .thirdNoir {
+        height: 126px;
+        width: 21px;
+        margin-left: 82px;
     }
 }
 
